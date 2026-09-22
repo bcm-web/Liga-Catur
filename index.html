@@ -318,39 +318,69 @@ function openTab(evt, tabName) {
 }
 </script>
 <!-- ===============================
-      SCRIPT TAMBAHAN SORT RATING
+      SCRIPT SORT PESERTA
 =============================== -->
 <script>
-function sortTable(id) {
-  var table, rows, switching, i, x, y, shouldSwitch;
-  table = document.getElementById(id);
-  switching = true;
-  while (switching) {
-    switching = false;
-    rows = table.rows;
-    for (i = 1; i < rows.length-1; i++) {
-      shouldSwitch = false;
-      x = parseInt(rows[i].cells[2].innerHTML); // kolom rating
-      y = parseInt(rows[i+1].cells[2].innerHTML);
-      if (x < y) { // rating besar di atas
-        shouldSwitch = true;
-        break;
-      }
-    }
-    if (shouldSwitch) {
-      rows[i].parentNode.insertBefore(rows[i+1], rows[i]);
-      switching = true;
-    }
-  }
+
+function sortByName(id) {
+  var table = document.getElementById(id);
+  if (!table) return;
+
+  var rows = Array.from(table.rows).slice(1);
+
+  rows.sort(function(a, b) {
+    var namaA = a.cells[1].innerText.trim();
+    var namaB = b.cells[1].innerText.trim();
+
+    return namaA.localeCompare(namaB, 'id');
+  });
+
+  rows.forEach(function(row, index) {
+    row.cells[0].innerText = index + 1;
+    table.appendChild(row);
+  });
 }
 
-// panggil untuk tiap divisi
+
+function sortByRating(id) {
+  var table = document.getElementById(id);
+  if (!table) return;
+
+  var rows = Array.from(table.rows).slice(1);
+
+  rows.sort(function(a, b) {
+
+    var ratingA = parseInt(a.cells[3].innerText) || 0;
+    var ratingB = parseInt(b.cells[3].innerText) || 0;
+
+    if (ratingA !== ratingB) {
+      return ratingB - ratingA;
+    }
+
+    var namaA = a.cells[2].innerText.trim();
+    var namaB = b.cells[2].innerText.trim();
+
+    return namaA.localeCompare(namaB, 'id');
+  });
+
+  rows.forEach(function(row, index) {
+    row.cells[0].innerText = index + 1;
+    table.appendChild(row);
+  });
+}
+
+
 window.onload = function() {
-  sortTable("tableRookie");
-  sortTable("tableStandard");
-  sortTable("tableElite");
-  // nanti bisa ditambahkan Legend juga
+
+  sortByName("tableYunior");
+  sortByName("tableStandard");
+  sortByName("tableElite");
+
+  sortByRating("tableLegend");
+
 };
+
+</script>
 </script>
 
 
