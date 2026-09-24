@@ -469,24 +469,26 @@ function sortByName(id) {
     table.appendChild(row);
   });
 }
-
-
+    
 function sortByRating(id) {
   var table = document.getElementById(id);
   if (!table) return;
 
   var rows = Array.from(table.rows).slice(1);
 
+  var ratingColumn = (id === "tableLegend") ? 3 : 2;
+  var nameColumn = (id === "tableLegend") ? 2 : 1;
+
   rows.sort(function(a, b) {
-    var ratingA = parseInt(a.cells[3].innerText) || 0;
-    var ratingB = parseInt(b.cells[3].innerText) || 0;
+    var ratingA = parseInt(a.cells[ratingColumn].innerText) || 0;
+    var ratingB = parseInt(b.cells[ratingColumn].innerText) || 0;
 
     if (ratingA !== ratingB) {
       return ratingB - ratingA;
     }
 
-    var namaA = a.cells[2].innerText.trim();
-    var namaB = b.cells[2].innerText.trim();
+    var namaA = a.cells[nameColumn].innerText.trim();
+    var namaB = b.cells[nameColumn].innerText.trim();
 
     return namaA.localeCompare(namaB, 'id');
   });
@@ -495,7 +497,8 @@ function sortByRating(id) {
     row.cells[0].innerText = index + 1;
     table.appendChild(row);
   });
-}
+    }
+
 
 
 sortByName("tableYunior");
