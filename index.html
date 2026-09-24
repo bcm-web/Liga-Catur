@@ -391,17 +391,68 @@ updateDateTime();
     </tr>
   </table>
 </div>
-      row.cells[0].innerText = index + 1;
+<!-- ===============================
+      SCRIPT SORT PESERTA
+================================ -->
+<script>
+
+function sortByName(id) {
+  var table = document.getElementById(id);
+  if (!table) return;
+
+  var rows = Array.from(table.rows).slice(1);
+
+  rows.sort(function(a, b) {
+    var namaA = a.cells[1].innerText.trim();
+    var namaB = b.cells[1].innerText.trim();
+
+    return namaA.localeCompare(namaB, 'id');
+  });
+
+  rows.forEach(function(row, index) {
+    row.cells[0].innerText = index + 1;
     table.appendChild(row);
   });
 }
+
+
+function sortByRating(id) {
+  var table = document.getElementById(id);
+  if (!table) return;
+
+  var rows = Array.from(table.rows).slice(1);
+
+  rows.sort(function(a, b) {
+
+    var ratingA = parseInt(a.cells[3].innerText) || 0;
+    var ratingB = parseInt(b.cells[3].innerText) || 0;
+
+    if (ratingA !== ratingB) {
+      return ratingB - ratingA;
+    }
+
+    var namaA = a.cells[2].innerText.trim();
+    var namaB = b.cells[2].innerText.trim();
+
+    return namaA.localeCompare(namaB, 'id');
+  });
+
+  rows.forEach(function(row, index) {
+    row.cells[0].innerText = index + 1;
+    table.appendChild(row);
+  });
+}
+
+
 sortByName("tableYunior");
 sortByName("tableStandard");
 sortByName("tableElite");
 sortByRating("tableLegend");
 
+</script>      
 
-</script>
+
+
 
 <!-- Tab Puzzle -->
 <div class="tabs">
