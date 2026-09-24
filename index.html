@@ -15,11 +15,13 @@
   <title>Bubuhan Catur Mania</title>
 </head>
   <script>
-document.querySelectorAll('button').forEach(function(button) {
-  button.onclick = function(e) {
-    e.preventDefault();
-    alert('🔧 Website sedang dalam perbaikan');
-  };
+window.addEventListener('load', function() {
+  document.querySelectorAll('button').forEach(function(button) {
+    button.onclick = function(e) {
+      e.preventDefault();
+      alert('🔧 Website sedang dalam perbaikan');
+    };
+  });
 });
   </script>
 <body>
