@@ -568,36 +568,151 @@ sortByRating("tableLegend");
 <li>
 <button class="tablink" onclick="window.open('https://forms.gle/ikULSA6fCHNRpA5k7', '_blank')">
   Formulir Pendaftaran
-</button></li>
-<li>isi formulir diatas</li>
-</ul>
+<!-- Tab Puzzle -->
+<div class="tabs">
+  <button class="tablink" onclick="openTab(event,'Puzzle')">Puzzle Catur</button>
 </div>
+
+<div id="Puzzle" class="tabcontent">
+  <h2>🎯 Puzzle Catur Hari Ini</h2>
+
+  <div style="text-align:center;">
+    <img src="https://raw.githubusercontent.com/underdog77-web/Liga-Pro-Catur-Kaltim-/refs/heads/main/FB_IMG_1759069655000.jpg"
+         width="700">
+  </div>
+
+  <p><b>Tantangan:</b> Putih jalan, menang</p>
+
+  <button onclick="document.getElementById('jawabanPuzzle').style.display='block'">
+    Lihat Jawaban
+  </button>
+
+  <div id="jawabanPuzzle"
+       style="display:none; margin-top:10px; background:#ecf0f1; padding:10px; border-radius:5px;">
+    Jawaban: belum tersedia
+  </div>
+</div>
+
+
+<!-- Pairing Tab -->
+<div class="tabs">
+  <button class="tablink" onclick="openTab(event,'Pairing')">Pairing</button>
+</div>
+
+<div id="Pairing" class="tabcontent">
+  <h2>Pairing</h2>
+  <p>Klik tombol di bawah untuk membuka pairing di Chess-Results.</p>
+
+  <a href="https://chess-results.com/fed.aspx?lan=26&fed=INA&bdld1=12"
+     target="_blank"
+     style="display:inline-block; padding:12px 24px; background-color:green; color:white; text-decoration:none; border-radius:8px; font-weight:bold;">
+     🔗 Buka Pairing Chess-Results
+  </a>
+</div>
+
+
+<!-- Peraturan Tab -->
+<div class="tabs">
+  <button class="tablink" onclick="openTab(event,'Peraturan')">Peraturan</button>
+</div>
+
+<div id="Peraturan" class="tabcontent">
+  <h2>Peraturan Liga BCM Kaltim 2026</h2>
+
+  <ol>
+    <li>
+      <strong>Yunior U-16</strong>: Terbuka bagi pemain berusia maksimal 16 tahun,
+      termasuk pendaftar baru. Juara 1 event sebelumnya tetap diperbolehkan.
+    </li>
+
+    <li>
+      <strong>Pemula</strong>: Terbuka bagi peserta Event Ngopi Boss 1 &amp; 2
+      maupun pendaftar baru. Juara 1 event sebelumnya tidak diperbolehkan,
+      kecuali juara 1 kategori Yunior. Pendaftar baru wajib melalui verifikasi
+      dan persetujuan Tim.
+    </li>
+
+    <li>
+      <strong>Terbuka</strong>: Terbuka untuk semua pemain tanpa batas usia,
+      kategori, maupun gelar.
+    </li>
+
+    <li>
+      <strong>Peraturan</strong>: FIDE Laws of Chess 2023 berlaku.
+    </li>
+  </ol>
+</div>
+
+
+<!-- Informasi Tab -->
+<div class="tabs">
+  <button class="tablink" onclick="openTab(event,'Informasi')">Informasi</button>
+</div>
+
+<div id="Informasi" class="tabcontent">
+  <h2>Informasi Pengurus</h2>
+
+  <ul>
+    <li>Ketua:</li>
+    <li>Sekretaris:</li>
+  </ul>
+</div>
+
+
+<!-- Pendaftaran Tab -->
+<div class="tabs">
+  <button class="tablink" onclick="openTab(event,'Pendaftaran')">Pendaftaran</button>
+</div>
+
+<div id="Pendaftaran" class="tabcontent">
+  <h2>Informasi Pendaftaran</h2>
+
+  <p>Hubungi panitia berikut untuk pendaftaran:</p>
+
+  <ul>
+    <li>Astian Dana Ahadda</li>
+
+    <li>
+      <button class="tablink"
+              onclick="window.open('https://forms.gle/ikULSA6fCHNRpA5k7', '_blank')">
+        Formulir Pendaftaran
+      </button>
+    </li>
+
+    <li>isi formulir diatas</li>
+  </ul>
+</div>
+
 
 <!-- Hadiah / Bonus Tab -->
 <div class="tabs">
-  <button class="tablink" onclick="openTab(event,'Hadiah')">Hadiah / Bonus</button>
+  <button class="tablink" onclick="openTab(event,'Hadiah')">
+    Hadiah / Bonus
+  </button>
 </div>
 
 <div id="Hadiah" class="tabcontent">
-  <h2>Hadiah & Bonus Liga BCM Kaltim 2026</h2>
-  
-    
-  
+  <h2>Hadiah &amp; Bonus Liga BCM Kaltim 2026</h2>
 </div>
+
 
 <!-- Sponsor Tab -->
 <div class="tabs">
   <button class="tablink" onclick="openTab(event,'Sponsor')">Sponsor</button>
 </div>
+
 <div id="Sponsor" class="tabcontent">
-  <h2>Sponsor & Pendukung</h2>
+  <h2>Sponsor &amp; Pendukung</h2>
+
   <p>Liga ini didukung oleh:</p>
+
   <ul>
     <li>Bubuhan Catur Mania Kaltim (BCM)</li>
     <li>Junior Chess Club (JCC)</li>
-    <li>Kafe Ngopi Boss </li>
+    <li>Kafe Ngopi Boss</li>
   </ul>
 </div>
+
 
 <!-- Berita Tab -->
 <div class="tabs">
@@ -605,22 +720,35 @@ sortByRating("tableLegend");
 </div>
 
 <div id="Berita" class="tabcontent">
-  <h2>Berita & Update</h2>
+  <h2>Berita &amp; Update</h2>
+
   <ul>
     <li>[05 Sept 2025] Liga Pro resmi di sosialisasikan</li>
     <li>[07 Sept 2025] Website resmi liga diluncurkan.</li>
-    <li>Pelaksanaan Liga Sesi 1 tanggal 14 September di Sport Hall Pondok Surya Indah Jl.PM Noor Samarinda Kalimantan Timur.</li>
+    <li>
+      Pelaksanaan Liga Sesi 1 tanggal 14 September di Sport Hall
+      Pondok Surya Indah Jl.PM Noor Samarinda Kalimantan Timur.
+    </li>
   </ul>
 </div>
 
-<!-- Galeri Tab -->
-<div class="tabs">
-  <button class="tablink" onclick="openTab(event,'Turnamen')">Turnamen</button>
 
+<!-- Turnamen Tab -->
+<div class="tabs">
+  <button class="tablink" onclick="openTab(event,'Turnamen')">
+    Turnamen
+  </button>
+</div>
 
 <div id="Turnamen" class="tabcontent">
   <h2>Turnamen Catur</h2>
+
   <img src="NGOPI BOSS 3.jpg"
-     alt="Poster Turnamen Catur NGOPI BOSS 3"
-     style="width:90%; max-width:700px; height:auto; display:block; margin:20px auto; border-radius:10px;">
+       alt="Poster Turnamen Catur NGOPI BOSS 3"
+       style="width:90%; max-width:700px; height:auto; display:block; margin:20px auto; border-radius:10px;">
 </div>
+
+
+<!-- Penutup halaman -->
+</body>
+  </html>
