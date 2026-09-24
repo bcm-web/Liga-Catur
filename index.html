@@ -392,6 +392,7 @@ updateDateTime();
   </table>
 </div>
   <script>
+<script>
 function openTab(evt, tabName) {
   var i, tabcontent, tablinks;
 
@@ -412,11 +413,7 @@ function openTab(evt, tabName) {
   document.getElementById(tabName).classList.add("active");
   evt.currentTarget.classList.add("active");
 }
-  </script>
-<!-- ===============================
-      SCRIPT SORT PESERTA
-================================ -->
-<script>
+
 
 function sortByName(id) {
   var table = document.getElementById(id);
@@ -445,7 +442,6 @@ function sortByRating(id) {
   var rows = Array.from(table.rows).slice(1);
 
   rows.sort(function(a, b) {
-
     var ratingA = parseInt(a.cells[3].innerText) || 0;
     var ratingB = parseInt(b.cells[3].innerText) || 0;
 
@@ -470,9 +466,7 @@ sortByName("tableYunior");
 sortByName("tableStandard");
 sortByName("tableElite");
 sortByRating("tableLegend");
-
-</script>      
-
+</script>
 
 
 
