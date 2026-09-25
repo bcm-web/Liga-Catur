@@ -15,14 +15,18 @@
   <title>Bubuhan Catur Mania</title>
 </head>
   <script>
-    var maintenance = false;
+var maintenance = true;
+
 window.addEventListener('load', function() {
-  document.querySelectorAll('button').forEach(function(button) {
-    button.onclick = function(e) {
+  if (!maintenance) return;
+
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('button')) {
       e.preventDefault();
+      e.stopImmediatePropagation();
       alert('🔧 Website sedang dalam perbaikan');
-    };
-  });
+    }
+  }, true);
 });
   </script>
 <body>
