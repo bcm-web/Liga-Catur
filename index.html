@@ -660,6 +660,35 @@ testPieces.forEach(function(piece) {
   }
 });
 </script>
+  <script>
+var selectedPiece = null;
+
+document.querySelectorAll(".square").forEach(function(square) {
+  square.addEventListener("click", function() {
+
+    // Klik buah
+    if (square.innerText.trim() !== "" && selectedPiece === null) {
+      selectedPiece = square;
+      square.style.outline = "3px solid red";
+      return;
+    }
+
+    // Pindahkan buah
+    if (selectedPiece !== null) {
+      square.innerText = selectedPiece.innerText;
+
+      square.style.fontSize = "42px";
+      square.style.textAlign = "center";
+      square.style.lineHeight = "50px";
+
+      selectedPiece.innerText = "";
+      selectedPiece.style.outline = "";
+
+      selectedPiece = null;
+    }
+  });
+});
+  </script>
 </div>
 
 
