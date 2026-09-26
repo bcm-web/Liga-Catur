@@ -441,60 +441,7 @@ updateDateTime();
       <th>Nama</th>
       <th>Rating</th>
     </tr>
-    <tr>
-  <td></td>
-  <td></td>
-  <td>Buya Altafian</td>
-  <td>1300</td>
-</tr>
-<tr>
-  <td></td>
-  <td></td>
-  <td>Ahmad Jalaluddin Karim</td>
-  <td>1900</td>
-</tr>
-<tr>
-  <td></td>
-  <td></td>
-  <td>Malik Al-Fatih</td>
-  <td>1300</td>
-</tr>
-<tr>
-  <td></td>
-  <td></td>
-  <td>Elwan Nahar</td>
-  <td>1600</td>
-</tr>
-<tr>
-  <td></td>
-  <td></td>
-  <td>Sugeng Prayitno</td>
-  <td>1900</td>
-</tr>
-<tr>
-  <td></td>
-  <td></td>
-  <td>Azfar Asy-syafi Athallah</td>
-  <td>1300</td>
-</tr>
-<tr>
-  <td></td>
-  <td></td>
-  <td>Ambo Uke</td>
-  <td>1900</td>
-</tr>
-<tr>
-  <td></td>
-  <td></td>
-  <td>Muhammad Nur Ahza Azizan</td>
-  <td>1300</td>
-</tr>
-<tr>
-  <td></td>
-  <td></td>
-  <td>Azwan Asy-syafiq Athallah</td>
-  <td>1300</td>
-  </tr>
+    
   </table>
 </div>
   <script>
@@ -520,7 +467,57 @@ function openTab(evt, tabName) {
   evt.currentTarget.classList.add("active");
 }
 
+function updateLegend() {
+  var legend = document.getElementById("tableLegend");
+  if (!legend) return;
 
+  while (legend.rows.length > 1) {
+    legend.deleteRow(1);
+  }
+
+  var players = new Map();
+
+  function ambilData(id) {
+    var table = document.getElementById(id);
+    if (!table) return;
+
+    Array.from(table.rows).slice(1).forEach(function(row) {
+      var nama = row.cells[1].innerText.trim();
+      var rating = parseInt(row.cells[2].innerText) || 0;
+
+      if (nama && !players.has(nama.toLowerCase())) {
+        players.set(nama.toLowerCase(), {
+          nama: nama,
+          rating: rating
+        });
+      }
+    });
+  }
+
+  // Prioritas divisi bawah
+  ambilData("tableYunior");
+  ambilData("tableStandard");
+  ambilData("tableElite");
+
+  var data = Array.from(players.values());
+
+  data.sort(function(a, b) {
+    if (a.rating !== b.rating) {
+      return b.rating - a.rating;
+    }
+
+    return a.nama.localeCompare(b.nama, 'id');
+  });
+
+  data.forEach(function(player, index) {
+    var row = legend.insertRow(-1);
+
+    row.insertCell(0).innerText = index + 1;
+    row.insertCell(1).innerText = "";
+    row.insertCell(2).innerText = player.nama;
+    row.insertCell(3).innerText = player.rating;
+  });
+    }
 function sortByName(id) {
   var table = document.getElementById(id);
   if (!table) return;
@@ -574,7 +571,7 @@ function sortByRating(id) {
 sortByName("tableYunior");
 sortByRating("tableStandard");
 sortByRating("tableElite");
-sortByRating("tableLegend");
+updateLegend();
 </script>
 
 <!-- Tab Puzzle -->
