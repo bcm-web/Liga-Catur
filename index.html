@@ -587,21 +587,48 @@ updateLegend();
 <div id="Puzzle" class="tabcontent">
   <h2>🎯 Puzzle Catur Hari Ini</h2>
 
-  <div style="text-align:center;">
-    <img src="https://raw.githubusercontent.com/underdog77-web/Liga-Pro-Catur-Kaltim-/refs/heads/main/FB_IMG_1759069655000.jpg"
-         width="700">
-  </div>
+  <div id="chessboard"></div>
+</div>
 
-  <p><b>Tantangan:</b> Putih jalan, menang</p>
+<style>
+#chessboard {
+  width: 400px;
+  height: 400px;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  border: 2px solid #333;
+}
 
-  <button onclick="document.getElementById('jawabanPuzzle').style.display='block'">
-    Lihat Jawaban
-  </button>
+.square {
+  width: 50px;
+  height: 50px;
+}
 
-  <div id="jawabanPuzzle"
-       style="display:none; margin-top:10px; background:#ecf0f1; padding:10px; border-radius:5px;">
-    Jawaban: belum tersedia
-  </div>
+.square.light {
+  background: #f0d9b5;
+}
+
+.square.dark {
+  background: #b58863;
+}
+</style>
+
+<script>
+var board = document.getElementById("chessboard");
+
+for (var row = 0; row < 8; row++) {
+  for (var col = 0; col < 8; col++) {
+    var square = document.createElement("div");
+
+    square.className =
+      "square " + ((row + col) % 2 === 0 ? "light" : "dark");
+
+    board.appendChild(square);
+  }
+}
+</script>
+
 </div>
 
 
