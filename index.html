@@ -621,10 +621,13 @@ for (var row = 0; row < 8; row++) {
   for (var col = 0; col < 8; col++) {
     var square = document.createElement("div");
 
-    square.className =
-      "square " + ((row + col) % 2 === 0 ? "light" : "dark");
+square.className =
+  "square " + ((row + col) % 2 === 0 ? "light" : "dark");
 
-    board.appendChild(square);
+square.dataset.square =
+  String.fromCharCode(97 + col) + (8 - row);
+
+board.appendChild(square);
   }
 }
 </script>
