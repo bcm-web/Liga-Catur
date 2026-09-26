@@ -631,7 +631,35 @@ board.appendChild(square);
   }
 }
 </script>
+<script>
+var testPieces = [
+  ["e1","♔"],
+  ["e8","♚"],
+  ["d1","♕"],
+  ["d8","♛"],
+  ["a1","♖"],
+  ["h8","♜"],
+  ["c1","♗"],
+  ["f8","♝"],
+  ["g1","♘"],
+  ["b8","♞"],
+  ["e4","♙"],
+  ["d5","♟"],
+  ["f4","♙"],
+  ["g6","♟"]
+];
 
+testPieces.forEach(function(piece) {
+  var kotak = document.querySelector('[data-square="' + piece[0] + '"]');
+
+  if (kotak) {
+    kotak.innerText = piece[1];
+    kotak.style.fontSize = "42px";
+    kotak.style.textAlign = "center";
+    kotak.style.lineHeight = "50px";
+  }
+});
+</script>
 </div>
 
 
