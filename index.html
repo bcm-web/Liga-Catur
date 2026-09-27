@@ -909,18 +909,47 @@ document.querySelectorAll(".square").forEach(function(square) {
     background:white;
     width:90%;
     max-width:400px;
-    margin:15% auto;
-    padding:20px;
-    border-radius:10px;
+    margin:10% auto;
+    padding:22px;
+    border-radius:12px;
     text-align:center;
+    box-shadow:0 5px 20px rgba(0,0,0,0.3);
   ">
 
-    <h2 id="profilNama"></h2>
+    <h2 id="profilNama" style="margin-bottom:5px;"></h2>
+
+    <div style="
+      font-size:28px;
+      font-weight:bold;
+      margin:15px 0;
+    ">
+      ♟ <span id="profilRating"></span>
+    </div>
 
     <p>Gelar: <b id="profilGelar"></b></p>
-    <p>Rating: <b id="profilRating"></b></p>
 
-    <button onclick="tutupProfil()">Tutup</button>
+    <hr>
+
+    <p>🏆 Jumlah Turnamen: <b id="profilTurnamen">0</b></p>
+    <p>♟ Jumlah Pertandingan: <b id="profilPertandingan">0</b></p>
+    <p>✅ Menang: <b id="profilMenang">0</b></p>
+    <p>🤝 Remis: <b id="profilRemis">0</b></p>
+    <p>❌ Kalah: <b id="profilKalah">0</b></p>
+
+    <hr>
+
+    <p>📈 Rating Tertinggi: <b id="profilRatingTertinggi">0</b></p>
+    <p>📊 Perubahan Rating Terakhir: <b id="profilPerubahan">0</b></p>
+
+    <button onclick="tutupProfil()" style="
+      margin-top:10px;
+      padding:8px 20px;
+      border:none;
+      border-radius:6px;
+      cursor:pointer;
+    ">
+      Tutup
+    </button>
 
   </div>
 </div>
@@ -930,8 +959,21 @@ document.querySelectorAll(".square").forEach(function(square) {
 function bukaProfil(nama, gelar, rating) {
 
   document.getElementById("profilNama").innerText = nama;
-  document.getElementById("profilGelar").innerText = gelar;
-  document.getElementById("profilRating").innerText = rating;
+
+  document.getElementById("profilGelar").innerText =
+    gelar || "-";
+
+  document.getElementById("profilRating").innerText =
+    rating || "0";
+
+  /* Data sementara */
+  document.getElementById("profilTurnamen").innerText = "0";
+  document.getElementById("profilPertandingan").innerText = "0";
+  document.getElementById("profilMenang").innerText = "0";
+  document.getElementById("profilRemis").innerText = "0";
+  document.getElementById("profilKalah").innerText = "0";
+  document.getElementById("profilRatingTertinggi").innerText = rating || "0";
+  document.getElementById("profilPerubahan").innerText = "0";
 
   document.getElementById("profilPopup").style.display = "block";
 }
@@ -979,8 +1021,8 @@ window.addEventListener("load", function() {
 
 });
 
-</script>      
-
+</script>
+      
 
 
 </body>
