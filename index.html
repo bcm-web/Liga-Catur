@@ -29,6 +29,7 @@ window.addEventListener('load', function() {
   }, true);
 });
   </script>
+  
 <body>
   
 <h2>
@@ -860,7 +861,112 @@ document.querySelectorAll(".square").forEach(function(square) {
        alt="Poster Turnamen Catur NGOPI BOSS 3"
        style="width:90%; max-width:700px; height:auto; display:block; margin:20px auto; border-radius:10px;">
 </div>
+<!-- POPUP PROFIL PEMAIN -->
+<div id="profilPopup" style="
+  display:none;
+  position:fixed;
+  z-index:9999;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.6);
+">
 
+  <div style="
+    background:white;
+    width:90%;
+    max-width:400px;
+    margin:15% auto;
+    padding:20px;
+    border-radius:10px;
+    text-align:center;
+  ">
+
+    <h2 id="profilNama"></h2>
+
+    <p>Kategori: <b id="profilKategori"></b></p>
+    <p>Rating: <b id="profilRating"></b></p>
+
+    <button onclick="tutupProfil()">Tutup</button>
+
+  </div>
+</div>
+
+<script>
+
+function bukaProfil(nama, rating, kategori) {
+
+  document.getElementById("profilNama").innerText = nama;
+  document.getElementById("profilKategori").innerText = kategori;
+  document.getElementById("profilRating").innerText = rating;
+
+  document.getElementById("profilPopup").style.display = "block";
+}
+
+
+function tutupProfil() {
+
+  document.getElementById("profilPopup").style.display = "none";
+
+}
+
+
+window.addEventListener("load", function() {
+
+  var daftarTabel = [
+
+    ["tableYunior", "Yunior U16"],
+    ["tableStandard", "Pemula/Amatir"],
+    ["tableElite", "Terbuka"]
+
+  ];
+
+
+  daftarTabel.forEach(function(data) {
+
+    var table = document.getElementById(data[0]);
+
+    if (!table) return;
+
+
+    Array.from(table.rows).slice(1).forEach(function(row) {
+
+      if (row.cells.length < 3) return;
+
+
+      var namaCell = row.cells[1];
+
+      var nama = namaCell.innerText.trim();
+
+      var rating = row.cells[2].innerText.trim();
+
+
+      if (!nama) return;
+
+
+      namaCell.style.cursor = "pointer";
+
+      namaCell.style.textDecoration = "underline";
+
+
+      namaCell.onclick = function() {
+
+        bukaProfil(
+          nama,
+          rating,
+          data[1]
+        );
+
+      };
+
+    });
+
+  });
+
+});
+
+</script>1
 
 </body>
                               </html>
