@@ -893,12 +893,44 @@ document.querySelectorAll(".square").forEach(function(square) {
   </div>
 </div>
 
+  <!-- POPUP PROFIL PEMAIN -->
+<div id="profilPopup" style="
+  display:none;
+  position:fixed;
+  z-index:9999;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.6);
+">
+
+  <div style="
+    background:white;
+    width:90%;
+    max-width:400px;
+    margin:15% auto;
+    padding:20px;
+    border-radius:10px;
+    text-align:center;
+  ">
+
+    <h2 id="profilNama"></h2>
+
+    <p>Gelar: <b id="profilGelar"></b></p>
+    <p>Rating: <b id="profilRating"></b></p>
+
+    <button onclick="tutupProfil()">Tutup</button>
+
+  </div>
+</div>
+
 <script>
 
-function bukaProfil(nama, rating, kategori) {
+function bukaProfil(nama, gelar, rating) {
 
   document.getElementById("profilNama").innerText = nama;
-  document.getElementById("profilKategori").innerText = kategori;
+  document.getElementById("profilGelar").innerText = gelar;
   document.getElementById("profilRating").innerText = rating;
 
   document.getElementById("profilPopup").style.display = "block";
@@ -914,59 +946,42 @@ function tutupProfil() {
 
 window.addEventListener("load", function() {
 
-  var daftarTabel = [
+  var table = document.getElementById("tableLegend");
 
-    ["tableYunior", "Yunior U16"],
-    ["tableStandard", "Pemula/Amatir"],
-    ["tableElite", "Terbuka"]
+  if (!table) return;
 
-  ];
+  Array.from(table.rows).slice(1).forEach(function(row) {
 
+    if (row.cells.length < 4) return;
 
-  daftarTabel.forEach(function(data) {
+    var namaCell = row.cells[2];
 
-    var table = document.getElementById(data[0]);
+    var nama = namaCell.innerText.trim();
+    var gelar = row.cells[1].innerText.trim();
+    var rating = row.cells[3].innerText.trim();
 
-    if (!table) return;
+    if (!nama) return;
 
+    namaCell.style.cursor = "pointer";
+    namaCell.style.textDecoration = "underline";
 
-    Array.from(table.rows).slice(1).forEach(function(row) {
+    namaCell.onclick = function() {
 
-      if (row.cells.length < 3) return;
+      bukaProfil(
+        nama,
+        gelar,
+        rating
+      );
 
-
-      var namaCell = row.cells[1];
-
-      var nama = namaCell.innerText.trim();
-
-      var rating = row.cells[2].innerText.trim();
-
-
-      if (!nama) return;
-
-
-      namaCell.style.cursor = "pointer";
-
-      namaCell.style.textDecoration = "underline";
-
-
-      namaCell.onclick = function() {
-
-        bukaProfil(
-          nama,
-          rating,
-          data[1]
-        );
-
-      };
-
-    });
+    };
 
   });
 
 });
 
-</script>1
+</script>      
+
+
 
 </body>
                               </html>
