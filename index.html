@@ -802,7 +802,7 @@ function updateLegend() {
 
     Array.from(table.rows).slice(1).forEach(function(row) {
       var nama = row.cells[1].innerText.trim();
-      var rating = parseInt(row.cells[2].innerText) || 0;
+      var rating = parseInt(row.cells[3].innerText) || 0;
 
       if (nama && !players.has(nama.toLowerCase())) {
         players.set(nama.toLowerCase(), {
