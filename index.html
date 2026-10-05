@@ -717,7 +717,7 @@ if (!rating) rating = row.cells[2].innerText.trim();
   var data = Array.from(players.values());
 
   data.sort(function(a, b) {
-    if (a.rating !== b.rating) {
+    if (Number(a.rating) !== Number(b.rating)) {
       return b.rating - a.rating;
     }
 
