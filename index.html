@@ -681,7 +681,7 @@ function openTab(evt, tabName) {
   evt.currentTarget.classList.add("active");
 }
 
-function updateLegend() {console.log("updateLegend mulai");
+function updateLegend() { ("updateLegend mulai");
   var legend = document.getElementById("tableLegend");
   if (!legend) return;
 
@@ -697,7 +697,7 @@ function updateLegend() {console.log("updateLegend mulai");
 
     Array.from(table.rows).slice(1).forEach(function(row) {
       var nama = row.cells[1].innerText.trim();
-      var rating = parseInt(row.cells[3].innerText.trim());
+      var rating = parseInt(row.cells[3].innerText) || parseInt(row.cells[2].innerText) || 0;
 
       if (isNaN(rating)) {
         rating = parseInt(row.cells[2].innerText.trim());
