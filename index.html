@@ -681,7 +681,7 @@ function openTab(evt, tabName) {
   evt.currentTarget.classList.add("active");
 }
 
-function updateLegend() { ("updateLegend mulai");
+function updateLegend() {
   var legend = document.getElementById("tableLegend");
   if (!legend) return;
 
@@ -697,21 +697,13 @@ function updateLegend() { ("updateLegend mulai");
 
     Array.from(table.rows).slice(1).forEach(function(row) {
       var nama = row.cells[1].innerText.trim();
-      var rating = parseInt(row.cells[3].innerText) || parseInt(row.cells[2].innerText) || 0;
+      var rating = parseInt(row.cells[2].innerText) || 0;
 
-      if (isNaN(rating)) {
-        rating = parseInt(row.cells[2].innerText.trim());
-      }
-
-      if (nama) {
-        var key = nama.toLowerCase();
-
-        if (!players.has(key)) {
-          players.set(key, {
-            nama: nama,
-            rating: rating
-          });
-        }
+      if (nama && !players.has(nama.toLowerCase())) {
+        players.set(nama.toLowerCase(), {
+          nama: nama,
+          rating: rating
+        });
       }
     });
   }
@@ -739,13 +731,6 @@ function updateLegend() { ("updateLegend mulai");
     row.insertCell(3).innerText = player.rating;
   });
     }
-
-    
-
-sortByRating("tableYunior");
-sortByRating("tableStandard");
-sortByRating("tableElite");
-updateLegend();
     
 </script>
 
