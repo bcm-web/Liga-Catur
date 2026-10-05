@@ -697,8 +697,8 @@ function updateLegend() {
 
     Array.from(table.rows).slice(1).forEach(function(row) {
       var nama = row.cells[1].innerText.trim();
-      var rating = parseInt(row.cells[3].innerText);
-if (isNaN(rating)) rating = parseInt(row.cells[2].innerText);
+      var rating = row.cells[3].innerText.trim();
+if (!rating) rating = row.cells[2].innerText.trim();
       
       if (nama && !players.has(nama.toLowerCase())) {
         players.set(nama.toLowerCase(), {
