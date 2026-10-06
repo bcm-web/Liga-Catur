@@ -1014,19 +1014,12 @@ window.addEventListener("load", function() {
     namaCell.style.cursor = "pointer";  
     namaCell.style.textDecoration = "underline";  
   
-    namaCell.onclick = function() {  
-  
-      bukaProfil(  
-        nama,  
-        gelar,  
-        rating  
-      );  
-  
-    };  
-  
-  });  
-  
-});  
+    namaCell.onclick = function() {
+  document.getElementById("profilNama").innerText = player.nama;
+  document.getElementById("profilRating").innerText = player.rating;
+  document.getElementById("profilGelar").innerText = "-";
+  document.getElementById("profilPopup").style.display = "block";
+};
   
 
 </script>
