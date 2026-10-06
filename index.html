@@ -523,18 +523,23 @@ function updateLegend() {
 
     Array.from(table.rows).slice(1).forEach(function(row) {
       var nama = row.cells[1].innerText.trim();
-var rating = parseInt(row.cells.length > 3 ? row.cells[3].innerText : "") || parseInt(row.cells[2].innerText) || 0;
-      
-      if (nama && !players.has(nama.toLowerCase())) {
-        players.set(nama.toLowerCase(), {
-          nama: nama,
-          rating: rating
-        });
-      }
+      if (!nama) return;
+
+      var ratingAwal = parseInt(row.cells[2].innerText) || 0;
+      var ratingBaru = row.cells.length > 3
+        ? parseInt(row.cells[3].innerText)
+        : NaN;
+
+      var rating = !isNaN(ratingBaru) ? ratingBaru : ratingAwal;
+
+      players.set(nama.toLowerCase(), {
+        nama: nama,
+        rating: rating
+      });
     });
   }
 
-  // Prioritas divisi bawah
+  // Data terbaru menang: Terbuka → Pemula → Yunior
   ambilData("tableYunior");
   ambilData("tableStandard");
   ambilData("tableElite");
@@ -557,55 +562,8 @@ var rating = parseInt(row.cells.length > 3 ? row.cells[3].innerText : "") || par
     row.insertCell(2).innerText = player.nama;
     row.insertCell(3).innerText = player.rating;
   });
-}
+  }
 
-function sortByName(id) {
-  var table = document.getElementById(id);
-  if (!table) return;
-
-  var rows = Array.from(table.rows).slice(1);
-
-  rows.sort(function(a, b) {
-    var namaA = a.cells[1].innerText.trim();
-    var namaB = b.cells[1].innerText.trim();
-
-    return namaA.localeCompare(namaB, 'id');
-  });
-
-  rows.forEach(function(row, index) {
-    row.cells[0].innerText = index + 1;
-    table.appendChild(row);
-  });
-}
-
-function sortByRating(id) {
-  var table = document.getElementById(id);
-  if (!table) return;
-
-  var rows = Array.from(table.rows).slice(1);
-
-  var ratingColumn = (id === "tableLegend") ? 3 : 2;
-  var nameColumn = (id === "tableLegend") ? 2 : 1;
-
-  rows.sort(function(a, b) {
-    var ratingA = parseInt(a.cells[ratingColumn].innerText) || 0;
-    var ratingB = parseInt(b.cells[ratingColumn].innerText) || 0;
-
-    if (ratingA !== ratingB) {
-      return ratingB - ratingA;
-    }
-
-    var namaA = a.cells[nameColumn].innerText.trim();
-    var namaB = b.cells[nameColumn].innerText.trim();
-
-    return namaA.localeCompare(namaB, 'id');
-  });
-
-  rows.forEach(function(row, index) {
-    row.cells[0].innerText = index + 1;
-    table.appendChild(row);
-  });
-}
 
 sortByRating("tableYunior");
 sortByRating("tableStandard");
