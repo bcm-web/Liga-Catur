@@ -507,8 +507,7 @@ function openTab(evt, tabName) {
   evt.currentTarget.classList.add("active");
 }
 
-    
-function updateLegend() {
+  function updateLegend() {
   var legend = document.getElementById("tableLegend");
   if (!legend) return;
 
@@ -532,21 +531,27 @@ function updateLegend() {
         : NaN;
 
       var rating = !isNaN(ratingBaru) ? ratingBaru : ratingAwal;
-
       var key = nama.toLowerCase();
 
-      players.set(key, {
-        nama: nama,
-        rating: rating,
-        ratingTertinggi: Math.max(
+      if (!players.has(key)) {
+        players.set(key, {
+          nama: nama,
+          rating: rating,
+          ratingTertinggi: Math.max(ratingAwal, rating)
+        });
+      } else {
+        var player = players.get(key);
+
+        player.rating = rating;
+        player.ratingTertinggi = Math.max(
+          player.ratingTertinggi,
           ratingAwal,
-          !isNaN(ratingBaru) ? ratingBaru : ratingAwal
-        )
-      });
+          rating
+        );
+      }
     });
   }
 
-  // Data terbaru menang: Terbuka → Pemula → Yunior
   ambilData("tableYunior");
   ambilData("tableStandard");
   ambilData("tableElite");
@@ -558,7 +563,7 @@ function updateLegend() {
       return b.rating - a.rating;
     }
 
-    return a.nama.localeCompare(b.nama, 'id');
+    return a.nama.localeCompare(b.nama, "id");
   });
 
   data.forEach(function(player, index) {
@@ -585,7 +590,11 @@ function updateLegend() {
         player.ratingTertinggi || "-";
     };
   });
-  }
+  }  
+
+    
+
+
 
 updateLegend();
 
