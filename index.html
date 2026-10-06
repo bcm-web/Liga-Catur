@@ -561,9 +561,21 @@ function updateLegend() {
     row.insertCell(1).innerText = "";
     row.insertCell(2).innerText = player.nama;
     row.insertCell(3).innerText = player.rating;
-  });
-  }
 
+    var namaCell = row.cells[2];
+
+    namaCell.style.cursor = "pointer";
+    namaCell.style.textDecoration = "underline";
+
+    namaCell.onclick = function() {
+      bukaProfil(
+        player.nama,
+        "",
+        player.rating
+      );
+    };
+  });
+  }  
 
 
 updateLegend();
