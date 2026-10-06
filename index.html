@@ -993,34 +993,40 @@ function tutupProfil() {
 }  
   
   
-window.addEventListener("load", function() {  
-  
-  var table = document.getElementById("tableLegend");  
-  
-  if (!table) return;  
-  
-  Array.from(table.rows).slice(1).forEach(function(row) {  
-  
-    if (row.cells.length < 4) return;  
-  
-    var namaCell = row.cells[2];  
-  
-    var nama = namaCell.innerText.trim();  
-    var gelar = row.cells[1].innerText.trim();  
-    var rating = row.cells[3].innerText.trim();  
-  
-    if (!nama) return;  
-  
-    namaCell.style.cursor = "pointer";  
-    namaCell.style.textDecoration = "underline";  
-  
+window.addEventListener("load", function() {
+
+  var table = document.getElementById("tableLegend");
+
+  if (!table) return;
+
+  Array.from(table.rows).slice(1).forEach(function(row) {
+
+    if (row.cells.length < 4) return;
+
+    var namaCell = row.cells[2];
+
+    var nama = namaCell.innerText.trim();
+    var gelar = row.cells[1].innerText.trim();
+    var rating = row.cells[3].innerText.trim();
+
+    if (!nama) return;
+
+    namaCell.style.cursor = "pointer";
+    namaCell.style.textDecoration = "underline";
+
     namaCell.onclick = function() {
-  document.getElementById("profilNama").innerText = player.nama;
-  document.getElementById("profilRating").innerText = player.rating;
-  document.getElementById("profilGelar").innerText = "-";
-  document.getElementById("profilPopup").style.display = "block";
-};
-  
+
+      bukaProfil(
+        nama,
+        gelar,
+        rating
+      );
+
+    };
+
+  });
+
+});
 
 </script>
 
