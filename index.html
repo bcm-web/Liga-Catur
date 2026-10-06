@@ -962,40 +962,59 @@ document.querySelectorAll(".square").forEach(function(square) {
 
 <script>
 
-function bukaProfil(nama, gelar, rating) {  
-  
-  document.getElementById("profilNama").innerText = nama;  
-  
-  document.getElementById("profilGelar").innerText =  
-    gelar || "-";  
-  
+function bukaProfil(nama, gelar, rating) {
+
+  document.getElementById("profilNama").innerText = nama;
+
+  document.getElementById("profilGelar").innerText =
+    gelar || "-";
+
+  document.getElementById("profilRating").innerText =
+    rating || "0";
+
+  /* Data sementara */
+  document.getElementById("profilTurnamen").innerText = "0";
+  document.getElementById("profilPertandingan").innerText = "0";
+  document.getElementById("profilMenang").innerText = "0";
+  document.getElementById("profilRemis").innerText = "0";
+  document.getElementById("profilKalah").innerText = "0";
+
+  /* Rating tertinggi */
   var ratingTertinggi = parseInt(rating) || 0;
 
-["tableYunior", "tableStandard", "tableElite"].forEach(function(id) {
-  var table = document.getElementById(id);
-  if (!table) return;
+  ["tableYunior", "tableStandard", "tableElite"].forEach(function(id) {
 
-  Array.from(table.rows).slice(1).forEach(function(row) {
-    if (row.cells.length < 4) return;
+    var table = document.getElementById(id);
+    if (!table) return;
 
-    var namaPemain = row.cells[1].innerText.trim();
+    Array.from(table.rows).slice(1).forEach(function(row) {
 
-    if (namaPemain.toLowerCase() !== nama.toLowerCase()) return;
+      if (row.cells.length < 4) return;
 
-    var ratingAwal = parseInt(row.cells[2].innerText) || 0;
-    var ratingBaru = parseInt(row.cells[3].innerText) || 0;
+      var namaPemain = row.cells[1].innerText.trim();
 
-    ratingTertinggi = Math.max(
-      ratingTertinggi,
-      ratingAwal,
-      ratingBaru
-    );
+      if (namaPemain.toLowerCase() !== nama.toLowerCase()) return;
+
+      var ratingAwal = parseInt(row.cells[2].innerText) || 0;
+      var ratingBaru = parseInt(row.cells[3].innerText) || 0;
+
+      ratingTertinggi = Math.max(
+        ratingTertinggi,
+        ratingAwal,
+        ratingBaru
+      );
+
+    });
+
   });
-});
 
-document.getElementById("profilRatingTertinggi").innerText =
-  ratingTertinggi || "-";
-  
+  document.getElementById("profilRatingTertinggi").innerText =
+    ratingTertinggi || "-";
+
+  document.getElementById("profilPerubahan").innerText = "0";
+
+  document.getElementById("profilPopup").style.display = "block";
+  }
   /* Data sementara */  
   document.getElementById("profilTurnamen").innerText = "0";  
   document.getElementById("profilPertandingan").innerText = "0";  
