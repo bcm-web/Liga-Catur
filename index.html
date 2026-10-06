@@ -966,55 +966,43 @@ function bukaProfil(nama, gelar, rating) {
   document.getElementById("profilMenang").innerText = "0";
   document.getElementById("profilRemis").innerText = "0";
   document.getElementById("profilKalah").innerText = "0";
-  document.getElementById("profilRatingTertinggi").innerText = rating || "0";
-  document.getElementById("profilPerubahan").innerText = "0";
 
-  document.getElementById("profilPopup").style.display = "block";
-}
+  /* Cari rating tertinggi dari Rating Awal dan Rating Baru */
+  var ratingTertinggi = 0;
 
+  ["tableYunior", "tableStandard", "tableElite"].forEach(function(id) {
 
-function tutupProfil() {
+    var table = document.getElementById(id);
+    if (!table) return;
 
-  document.getElementById("profilPopup").style.display = "none";
+    Array.from(table.rows).slice(1).forEach(function(row) {
 
-}
+      if (row.cells.length < 4) return;
 
+      var namaPemain = row.cells[1].innerText.trim();
 
-window.addEventListener("load", function() {
+      if (namaPemain.toLowerCase() !== nama.toLowerCase()) return;
 
-  var table = document.getElementById("tableLegend");
+      var ratingAwal = parseInt(row.cells[2].innerText) || 0;
+      var ratingBaru = parseInt(row.cells[3].innerText) || 0;
 
-  if (!table) return;
-
-  Array.from(table.rows).slice(1).forEach(function(row) {
-
-    if (row.cells.length < 4) return;
-
-    var namaCell = row.cells[2];
-
-    var nama = namaCell.innerText.trim();
-    var gelar = row.cells[1].innerText.trim();
-    var rating = row.cells[3].innerText.trim();
-
-    if (!nama) return;
-
-    namaCell.style.cursor = "pointer";
-    namaCell.style.textDecoration = "underline";
-
-    namaCell.onclick = function() {
-
-      bukaProfil(
-        nama,
-        gelar,
-        rating
+      ratingTertinggi = Math.max(
+        ratingTertinggi,
+        ratingAwal,
+        ratingBaru
       );
 
-    };
+    });
 
   });
 
-});
+  document.getElementById("profilRatingTertinggi").innerText =
+    ratingTertinggi || "-";
 
+  document.getElementById("profilPerubahan").innerText = "0";
+
+  document.getElementById("profilPopup").style.display = "block";
+  }
 </script>
 
 
