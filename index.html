@@ -507,6 +507,7 @@ function openTab(evt, tabName) {
   evt.currentTarget.classList.add("active");
 }
 
+    
 function updateLegend() {
   var legend = document.getElementById("tableLegend");
   if (!legend) return;
@@ -532,9 +533,15 @@ function updateLegend() {
 
       var rating = !isNaN(ratingBaru) ? ratingBaru : ratingAwal;
 
-      players.set(nama.toLowerCase(), {
+      var key = nama.toLowerCase();
+
+      players.set(key, {
         nama: nama,
-        rating: rating
+        rating: rating,
+        ratingTertinggi: Math.max(
+          ratingAwal,
+          !isNaN(ratingBaru) ? ratingBaru : ratingAwal
+        )
       });
     });
   }
@@ -573,10 +580,12 @@ function updateLegend() {
         "",
         player.rating
       );
+
+      document.getElementById("profilRatingTertinggi").innerText =
+        player.ratingTertinggi || "-";
     };
   });
-  }  
-
+  }
 
 updateLegend();
 
