@@ -994,7 +994,39 @@ function bukaProfil(nama, gelar, rating) {
   document.getElementById("profilMenang").innerText = "0";
   document.getElementById("profilRemis").innerText = "0";
   document.getElementById("profilKalah").innerText = "0";
-  document.getElementById("profilRatingTertinggi").innerText = rating || "0";
+
+  var ratingTertinggi = 0;
+
+  ["tableYunior", "tableStandard", "tableElite"].forEach(function(id) {
+
+    var table = document.getElementById(id);
+    if (!table) return;
+
+    Array.from(table.rows).slice(1).forEach(function(row) {
+
+      if (row.cells.length < 4) return;
+
+      var namaTabel = row.cells[1].innerText.trim();
+
+      if (namaTabel.toLowerCase() === nama.toLowerCase()) {
+
+        var ratingAwal = parseInt(row.cells[2].innerText) || 0;
+        var ratingBaru = parseInt(row.cells[3].innerText) || 0;
+
+        ratingTertinggi = Math.max(
+          ratingTertinggi,
+          ratingAwal,
+          ratingBaru
+        );
+      }
+
+    });
+
+  });
+
+  document.getElementById("profilRatingTertinggi").innerText =
+    ratingTertinggi || "0";
+
   document.getElementById("profilPerubahan").innerText = "0";
 
   document.getElementById("profilPopup").style.display = "block";
