@@ -312,6 +312,12 @@ updateDateTime();
 <div id="Yunior" class="tabcontent">
   <h2>Yunior U16 ♟</h2>
 
+  <select onchange="pilihTurnamenYunior(this.value)" style="padding:8px; margin-bottom:10px;">
+  <option value="ngopi3">Ngopi Boss 3</option>
+  <option value="ngopi4">Ngopi Boss 4</option>
+</select>
+
+<div id="yuniorNgopi3">
   <h3>Daftar Peserta Ngopi Boss 3</h3>
   <table id="tableYunior">
     <tr>
@@ -348,6 +354,21 @@ updateDateTime();
 <tr><td>25</td><td>ULWAN ASSYAKUR FAWWAZ</td><td>1300</td><td>1300</td><td>0</td></tr>
 <tr><td>26</td><td>MIKAIL FABIAN</td><td>1300</td><td>1300</td><td>0</td></tr>
 
+  </table>
+</div>
+  </div>
+
+<div id="yuniorNgopi4" style="display:none;">
+  <h3>Daftar Peserta Ngopi Boss 4</h3>
+
+  <table id="tableYunior4">
+    <tr>
+      <th>No</th>
+      <th>Nama</th>
+      <th>Rating awal</th>
+      <th>Rating baru</th>
+      <th>Perubahan</th>
+    </tr>
   </table>
 </div>
       
@@ -979,6 +1000,7 @@ document.querySelectorAll(".square").forEach(function(square) {
 </div>
 
 <script>
+  
 function bukaProfil(nama, gelar, rating) {
 
   document.getElementById("profilNama").innerText = nama;
@@ -1031,7 +1053,13 @@ function bukaProfil(nama, gelar, rating) {
 
   document.getElementById("profilPopup").style.display = "block";
   }
-  
+  function pilihTurnamenYunior(pilihan) {
+  document.getElementById("yuniorNgopi3").style.display =
+    pilihan === "ngopi3" ? "block" : "none";
+
+  document.getElementById("yuniorNgopi4").style.display =
+    pilihan === "ngopi4" ? "block" : "none";
+  }
 function tutupProfil() {  
   
   document.getElementById("profilPopup").style.display = "none";  
