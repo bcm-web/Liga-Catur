@@ -567,17 +567,7 @@ function openTab(evt, tabName) {
   document.getElementById(tabName).style.display = "block";
   document.getElementById(tabName).classList.add("active");
   evt.currentTarget.classList.add("active");
-  if (typeof pilihTurnamenYunior === "function") {
-pilihTurnamenYunior("ngopi4");
-}
-
-if (typeof pilihTurnamenPemula === "function") {
-pilihTurnamenPemula("ngopi4");
-}
-
-if (typeof pilihTurnamenTerbuka === "function") {
-pilihTurnamenTerbuka("ngopi4");
-  }
+  
 }
 
   function updateLegend() {
