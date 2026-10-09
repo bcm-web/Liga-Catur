@@ -563,7 +563,17 @@ function openTab(evt, tabName) {
   for (i = 0; i < tablinks.length; i++) {
     tablinks[i].classList.remove("active");
   }
-
+[
+"yuniorNgopi3",
+"yuniorNgopi4",
+"pemulaNgopi3",
+"pemulaNgopi4",
+"terbukaNgopi3",
+"terbukaNgopi4"
+].forEach(function(id) {
+var daftar = document.getElementById(id);
+if (daftar) daftar.style.display = "none";
+});
   document.getElementById(tabName).style.display = "block";
   document.getElementById(tabName).classList.add("active");
   evt.currentTarget.classList.add("active");
