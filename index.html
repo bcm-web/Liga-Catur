@@ -306,7 +306,7 @@ updateDateTime();
 </div>
 <!-- Yunior U16 Tab -->
 <div class="tabs">
-  <button class="tablink" onclick="openTab(event,'Yunior')">Yunior U16</button>
+  <button class="tablink" onclick="openTab(event,'Yunior'); pilihTurnamenYunior('ngopi4')">Yunior U16</button>
 </div>
 
 <div id="Yunior" class="tabcontent">
@@ -567,9 +567,7 @@ function openTab(evt, tabName) {
   document.getElementById(tabName).style.display = "block";
   document.getElementById(tabName).classList.add("active");
   evt.currentTarget.classList.add("active");
-  pilihTurnamenYunior("ngopi4");
-pilihTurnamenPemula("ngopi4");
-pilihTurnamenTerbuka("ngopi4");
+  
 }
 
   function updateLegend() {
