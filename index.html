@@ -668,6 +668,18 @@ row.insertCell(1).innerText =
 
 
 updateLegend();
+  function nomorOtomatis(id) {
+  var tabel = document.getElementById(id);
+  if (!tabel) return;
+
+  Array.from(tabel.rows).slice(1).forEach(function(row, index) {
+    row.cells[0].innerText = index + 1;
+  });
+}
+
+nomorOtomatis("tableYunior");
+nomorOtomatis("tableStandard");
+nomorOtomatis("tableElite");
 
 </script>
 
