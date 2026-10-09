@@ -379,10 +379,15 @@ updateDateTime();
 
 <div id="Standard" class="tabcontent">
   <h2>Pemula/non master ♞</h2>
+<select onchange="pilihTurnamenPemula(this.value)" style="padding:8px; margin-bottom:10px;">
+  <option value="ngopi3">Ngopi Boss 3</option>
+  <option value="ngopi4">Ngopi Boss 4</option>
+</select>
 
+<div id="pemulaNgopi3">
   <h3>Daftar Peserta Ngopi Boss 3</h3>
-
   <table id="tableStandard">
+  
     <tr>
       <th>No</th>
       <th>Nama</th>
@@ -419,6 +424,21 @@ updateDateTime();
    
   </table>
 </div>
+  </div>
+
+<div id="pemulaNgopi4" style="display:none;">
+  <h3>Daftar Peserta Ngopi Boss 4</h3>
+
+  <table id="tableStandard4">
+    <tr>
+      <th>No</th>
+      <th>Nama</th>
+      <th>Rating awal</th>
+      <th>Rating baru</th>
+      <th>Perubahan</th>
+    </tr>
+  </table>
+  </div>
 <!-- Elite Tab -->
 <div class="tabs">
   <button class="tablink" onclick="openTab(event,'Elite')">Terbuka</button>
@@ -1058,6 +1078,13 @@ function bukaProfil(nama, gelar, rating) {
     pilihan === "ngopi3" ? "block" : "none";
 
   document.getElementById("yuniorNgopi4").style.display =
+    pilihan === "ngopi4" ? "block" : "none";
+  }
+  function pilihTurnamenPemula(pilihan) {
+  document.getElementById("pemulaNgopi3").style.display =
+    pilihan === "ngopi3" ? "block" : "none";
+
+  document.getElementById("pemulaNgopi4").style.display =
     pilihan === "ngopi4" ? "block" : "none";
   }
 function tutupProfil() {  
