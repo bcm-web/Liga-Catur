@@ -447,9 +447,13 @@ updateDateTime();
 <div id="Elite" class="tabcontent">
   <h2>Terbuka ♜</h2>
 
+  <select onchange="pilihTurnamenTerbuka(this.value)" style="padding:8px; margin-bottom:10px;">
+  <option value="ngopi3">Ngopi Boss 3</option>
+  <option value="ngopi4">Ngopi Boss 4</option>
+</select>
+
+<div id="terbukaNgopi3">
   <h3>Daftar Peserta Ngopi Boss 3</h3>
-
-
   <table id="tableElite">
   <tr>
     <th>No</th>
@@ -490,6 +494,21 @@ updateDateTime();
 <tr><td>30</td><td>MUHAMMAD NUR AHZA AZIZAN</td><td>1262</td><td>1296</td><td>+34</td></tr>
 </table>
 </div>
+  </div>
+
+<div id="terbukaNgopi4" style="display:none;">
+  <h3>Daftar Peserta Ngopi Boss 4</h3>
+
+  <table id="tableElite4">
+    <tr>
+      <th>No</th>
+      <th>Nama</th>
+      <th>Rating awal</th>
+      <th>Rating baru</th>
+      <th>Perubahan</th>
+    </tr>
+  </table>
+  </div>
 
 <!-- Legend Tab -->
 <div class="tabs">
@@ -1085,6 +1104,13 @@ function bukaProfil(nama, gelar, rating) {
     pilihan === "ngopi3" ? "block" : "none";
 
   document.getElementById("pemulaNgopi4").style.display =
+    pilihan === "ngopi4" ? "block" : "none";
+  }
+  function pilihTurnamenTerbuka(pilihan) {
+  document.getElementById("terbukaNgopi3").style.display =
+    pilihan === "ngopi3" ? "block" : "none";
+
+  document.getElementById("terbukaNgopi4").style.display =
     pilihan === "ngopi4" ? "block" : "none";
   }
 function tutupProfil() {  
