@@ -1085,68 +1085,64 @@ function bukaProfil(nama, gelar, rating) {
   document.getElementById("profilGelar").innerText = gelar || "-";
   document.getElementById("profilRating").innerText = rating || "0";
 
-  // Nilai awal sebelum data selesai dimuat
-  document.getElementById("profilTurnamen").innerText = "0";
-  document.getElementById("profilPertandingan").innerText = "0";
-  document.getElementById("profilMenang").innerText = "0";
-  document.getElementById("profilRemis").innerText = "0";
-  document.getElementById("profilKalah").innerText = "0";
-  document.getElementById("profilPerubahan").innerText = "0";
-
-  var ratingTertinggi = 0;
-
-  ["tableYunior", "tableStandard", "tableElite"].forEach(function(id) {
-    var table = document.getElementById(id);
-    if (!table) return;
-
-    Array.from(table.rows).slice(1).forEach(function(row) {
-      if (row.cells.length < 4) return;
-
-      var namaTabel = row.cells[1].innerText.trim();
-
-      if (namaTabel.toLowerCase() === nama.toLowerCase()) {
-        var ratingAwal = parseInt(row.cells[2].innerText) || 0;
-        var ratingBaru = parseInt(row.cells[3].innerText) || 0;
-
-        ratingTertinggi = Math.max(
-          ratingTertinggi,
-          ratingAwal,
-          ratingBaru
-        );
-      }
-    });
+  [
+    "profilTurnamen",
+    "profilPertandingan",
+    "profilMenang",
+    "profilRemis",
+    "profilKalah",
+    "profilPerubahan"
+  ].forEach(function(id) {
+    document.getElementById(id).innerText = "0";
   });
 
-  document.getElementById("profilRatingTertinggi").innerText =
-    ratingTertinggi || "0";
-
+  document.getElementById("profilRatingTertinggi").innerText = "0";
   document.getElementById("profilPopup").style.display = "block";
 
-  // Ambil statistik Ngopi Boss 3 kategori Terbuka
-  fetch("https://bcm-web.github.io/Liga-Catur/hasil-ngopi-boss-3-terbuka.json")
-    .then(function(response) {
-      if (!response.ok) {
-        throw new Error("Data statistik tidak dapat dimuat");
-      }
-      return response.json();
+  var fileStatistik = [
+    "hasil-ngopi-boss-3-nonmaster.json",
+    "hasil-ngopi-boss-3-terbuka.json"
+  ];
+
+  Promise.all(
+    fileStatistik.map(function(file) {
+      return fetch(file)
+        .then(function(response) {
+          if (!response.ok) throw new Error(file);
+          return response.json();
+        });
     })
-    .then(function(data) {
+  ).then(function(semuaData) {
+    var pertandingan = 0;
+    var menang = 0;
+    var remis = 0;
+    var kalah = 0;
+    var ditemukan = false;
+
+    semuaData.forEach(function(data) {
       var pemain = data.pemain.find(function(item) {
-        return item.nama.toLowerCase() === nama.trim().toLowerCase();
+        return item.nama.trim().toLowerCase() ===
+          nama.trim().toLowerCase();
       });
 
       if (!pemain) return;
 
-      document.getElementById("profilTurnamen").innerText = "1";
-      document.getElementById("profilPertandingan").innerText =
-        pemain.pertandingan;
-      document.getElementById("profilMenang").innerText = pemain.menang;
-      document.getElementById("profilRemis").innerText = pemain.remis;
-      document.getElementById("profilKalah").innerText = pemain.kalah;
-    })
-    .catch(function(error) {
-      console.error("Gagal memuat statistik:", error);
+      ditemukan = true;
+      pertandingan += Number(pemain.pertandingan) || 0;
+      menang += Number(pemain.menang) || 0;
+      remis += Number(pemain.remis) || 0;
+      kalah += Number(pemain.kalah) || 0;
     });
+
+    document.getElementById("profilTurnamen").innerText =
+      ditemukan ? "1" : "0";
+    document.getElementById("profilPertandingan").innerText = pertandingan;
+    document.getElementById("profilMenang").innerText = menang;
+    document.getElementById("profilRemis").innerText = remis;
+    document.getElementById("profilKalah").innerText = kalah;
+  }).catch(function(error) {
+    console.error("Gagal memuat statistik:", error);
+  });
   }
   function pilihTurnamenYunior(pilihan) {
   document.getElementById("yuniorNgopi3").style.display =
