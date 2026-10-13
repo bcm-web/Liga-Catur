@@ -1079,26 +1079,55 @@ document.querySelectorAll(".square").forEach(function(square) {
 </div>
 
 <script>
-  
 function bukaProfil(nama, gelar, rating) {
   document.getElementById("profilNama").innerText = nama;
   document.getElementById("profilGelar").innerText = gelar || "-";
   document.getElementById("profilRating").innerText = rating || "0";
 
-  [
+  var ids = [
     "profilTurnamen",
     "profilPertandingan",
     "profilMenang",
     "profilRemis",
     "profilKalah",
     "profilPerubahan"
-  ].forEach(function(id) {
+  ];
+
+  ids.forEach(function(id) {
     document.getElementById(id).innerText = "0";
   });
 
-  document.getElementById("profilRatingTertinggi").innerText = "0";
+  // Hitung rating tertinggi dari tabel rating yang sudah ada
+  var ratingTertinggi = 0;
+
+  ["tableYunior", "tableStandard", "tableElite"].forEach(function(id) {
+    var table = document.getElementById(id);
+    if (!table) return;
+
+    Array.from(table.rows).slice(1).forEach(function(row) {
+      if (row.cells.length < 4) return;
+
+      var namaTabel = row.cells[1].innerText.trim();
+
+      if (namaTabel.toLowerCase() === nama.trim().toLowerCase()) {
+        var ratingAwal = parseInt(row.cells[2].innerText) || 0;
+        var ratingBaru = parseInt(row.cells[3].innerText) || 0;
+
+        ratingTertinggi = Math.max(
+          ratingTertinggi,
+          ratingAwal,
+          ratingBaru
+        );
+      }
+    });
+  });
+
+  document.getElementById("profilRatingTertinggi").innerText =
+    ratingTertinggi || "0";
+
   document.getElementById("profilPopup").style.display = "block";
 
+  // Statistik dua kategori dalam satu turnamen
   var fileStatistik = [
     "hasil-ngopi-boss-3-nonmaster.json",
     "hasil-ngopi-boss-3-terbuka.json"
@@ -1108,11 +1137,14 @@ function bukaProfil(nama, gelar, rating) {
     fileStatistik.map(function(file) {
       return fetch(file)
         .then(function(response) {
-          if (!response.ok) throw new Error(file);
+          if (!response.ok) {
+            throw new Error("Gagal membaca " + file);
+          }
           return response.json();
         });
     })
-  ).then(function(semuaData) {
+  )
+  .then(function(semuaData) {
     var pertandingan = 0;
     var menang = 0;
     var remis = 0;
@@ -1140,7 +1172,8 @@ function bukaProfil(nama, gelar, rating) {
     document.getElementById("profilMenang").innerText = menang;
     document.getElementById("profilRemis").innerText = remis;
     document.getElementById("profilKalah").innerText = kalah;
-  }).catch(function(error) {
+  })
+  .catch(function(error) {
     console.error("Gagal memuat statistik:", error);
   });
   }
