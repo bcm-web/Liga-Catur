@@ -1081,36 +1081,30 @@ document.querySelectorAll(".square").forEach(function(square) {
 <script>
   
 function bukaProfil(nama, gelar, rating) {
-
   document.getElementById("profilNama").innerText = nama;
+  document.getElementById("profilGelar").innerText = gelar || "-";
+  document.getElementById("profilRating").innerText = rating || "0";
 
-  document.getElementById("profilGelar").innerText =
-    gelar || "-";
-
-  document.getElementById("profilRating").innerText =
-    rating || "0";
-
+  // Nilai awal sebelum data selesai dimuat
   document.getElementById("profilTurnamen").innerText = "0";
   document.getElementById("profilPertandingan").innerText = "0";
   document.getElementById("profilMenang").innerText = "0";
   document.getElementById("profilRemis").innerText = "0";
   document.getElementById("profilKalah").innerText = "0";
+  document.getElementById("profilPerubahan").innerText = "0";
 
   var ratingTertinggi = 0;
 
   ["tableYunior", "tableStandard", "tableElite"].forEach(function(id) {
-
     var table = document.getElementById(id);
     if (!table) return;
 
     Array.from(table.rows).slice(1).forEach(function(row) {
-
       if (row.cells.length < 4) return;
 
       var namaTabel = row.cells[1].innerText.trim();
 
       if (namaTabel.toLowerCase() === nama.toLowerCase()) {
-
         var ratingAwal = parseInt(row.cells[2].innerText) || 0;
         var ratingBaru = parseInt(row.cells[3].innerText) || 0;
 
@@ -1120,17 +1114,39 @@ function bukaProfil(nama, gelar, rating) {
           ratingBaru
         );
       }
-
     });
-
   });
 
   document.getElementById("profilRatingTertinggi").innerText =
     ratingTertinggi || "0";
 
-  document.getElementById("profilPerubahan").innerText = "0";
-
   document.getElementById("profilPopup").style.display = "block";
+
+  // Ambil statistik Ngopi Boss 3 kategori Terbuka
+  fetch("https://bcm-web.github.io/Liga-Catur/hasil-ngopi-boss-3-terbuka.json")
+    .then(function(response) {
+      if (!response.ok) {
+        throw new Error("Data statistik tidak dapat dimuat");
+      }
+      return response.json();
+    })
+    .then(function(data) {
+      var pemain = data.pemain.find(function(item) {
+        return item.nama.toLowerCase() === nama.trim().toLowerCase();
+      });
+
+      if (!pemain) return;
+
+      document.getElementById("profilTurnamen").innerText = "1";
+      document.getElementById("profilPertandingan").innerText =
+        pemain.pertandingan;
+      document.getElementById("profilMenang").innerText = pemain.menang;
+      document.getElementById("profilRemis").innerText = pemain.remis;
+      document.getElementById("profilKalah").innerText = pemain.kalah;
+    })
+    .catch(function(error) {
+      console.error("Gagal memuat statistik:", error);
+    });
   }
   function pilihTurnamenYunior(pilihan) {
   document.getElementById("yuniorNgopi3").style.display =
