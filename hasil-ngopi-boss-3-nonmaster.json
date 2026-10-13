@@ -1,0 +1,32 @@
+{
+  "turnamen": "Ngopi Boss 3",
+  "kategori": "Non Master",
+  "jumlahBabak": 6,
+  "pemain": [
+    {"peringkat": 1, "nama": "AHMAD PESUT", "poin": 5.5, "pertandingan": 6, "menang": 5, "remis": 1, "kalah": 0},
+    {"peringkat": 2, "nama": "FARZA ABDILLAH", "poin": 5, "pertandingan": 6, "menang": 5, "remis": 0, "kalah": 1},
+    {"peringkat": 3, "nama": "SAMSUL", "poin": 5, "pertandingan": 6, "menang": 5, "remis": 0, "kalah": 1},
+    {"peringkat": 4, "nama": "M. ARSYAD", "poin": 4, "pertandingan": 6, "menang": 4, "remis": 0, "kalah": 2},
+    {"peringkat": 5, "nama": "SENDY WIDIAN", "poin": 4, "pertandingan": 6, "menang": 4, "remis": 0, "kalah": 2},
+    {"peringkat": 6, "nama": "FAUZI RAHMAN", "poin": 4, "pertandingan": 6, "menang": 4, "remis": 0, "kalah": 2},
+    {"peringkat": 7, "nama": "INDRAYANA", "poin": 4, "pertandingan": 6, "menang": 3, "remis": 2, "kalah": 1},
+    {"peringkat": 8, "nama": "JUNARDI", "poin": 3.5, "pertandingan": 6, "menang": 3, "remis": 1, "kalah": 2},
+    {"peringkat": 9, "nama": "EDI SOPIAN", "poin": 3.5, "pertandingan": 6, "menang": 3, "remis": 1, "kalah": 2},
+    {"peringkat": 10, "nama": "MUHAMMAD KASIM", "poin": 3.5, "pertandingan": 6, "menang": 3, "remis": 1, "kalah": 2},
+    {"peringkat": 11, "nama": "ELWAN NAHAR", "poin": 3.5, "pertandingan": 6, "menang": 3, "remis": 1, "kalah": 2},
+    {"peringkat": 12, "nama": "DHARMA PALA CANDRA", "poin": 3, "pertandingan": 6, "menang": 3, "remis": 0, "kalah": 3},
+    {"peringkat": 13, "nama": "ACONG", "poin": 3, "pertandingan": 6, "menang": 3, "remis": 0, "kalah": 3},
+    {"peringkat": 14, "nama": "IMBRAN", "poin": 3, "pertandingan": 6, "menang": 3, "remis": 0, "kalah": 3},
+    {"peringkat": 15, "nama": "MISRAN", "poin": 3, "pertandingan": 6, "menang": 3, "remis": 0, "kalah": 3},
+    {"peringkat": 16, "nama": "KUAT HARTANTO", "poin": 2.5, "pertandingan": 6, "menang": 2, "remis": 1, "kalah": 3},
+    {"peringkat": 17, "nama": "WINDRA ADHAR", "poin": 2.5, "pertandingan": 6, "menang": 2, "remis": 1, "kalah": 3},
+    {"peringkat": 18, "nama": "EDI NAJARUDIN", "poin": 2.5, "pertandingan": 6, "menang": 2, "remis": 1, "kalah": 3},
+    {"peringkat": 19, "nama": "RYAN LEKKE", "poin": 2.5, "pertandingan": 6, "menang": 2, "remis": 1, "kalah": 3},
+    {"peringkat": 20, "nama": "RANDYKA AKHSANI F", "poin": 2, "pertandingan": 6, "menang": 2, "remis": 0, "kalah": 4},
+    {"peringkat": 21, "nama": "HAPNI", "poin": 2, "pertandingan": 6, "menang": 2, "remis": 0, "kalah": 4},
+    {"peringkat": 23, "nama": "AVET ATAN", "poin": 2, "pertandingan": 6, "menang": 1, "remis": 2, "kalah": 3},
+    {"peringkat": 24, "nama": "MUHAMMAD ZAKI FIRMANSYAH", "poin": 1.5, "pertandingan": 6, "menang": 1, "remis": 1, "kalah": 4},
+    {"peringkat": 25, "nama": "RASYID", "poin": 1, "pertandingan": 6, "menang": 1, "remis": 0, "kalah": 5},
+    {"peringkat": 26, "nama": "SHUKI", "poin": 0, "pertandingan": 6, "menang": 0, "remis": 0, "kalah": 6}
+  ]
+    }
