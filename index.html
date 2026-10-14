@@ -1122,7 +1122,26 @@ function bukaProfil(nama, gelar, rating) {
 
   document.getElementById("profilRatingTertinggi").innerText =
     ratingTertinggi || "0";
+// Ambil perubahan rating terakhir berdasarkan prioritas kategori
+var perubahanTerakhir = "0";
 
+["tableElite", "tableStandard", "tableYunior"].some(function(id) {
+  var table = document.getElementById(id);
+  if (!table) return false;
+
+  var baris = Array.from(table.rows).slice(1).find(function(row) {
+    return row.cells.length >= 5 &&
+      row.cells[1].innerText.trim().toLowerCase() ===
+      nama.trim().toLowerCase();
+  });
+
+  if (!baris) return false;
+
+  perubahanTerakhir = baris.cells[4].innerText.trim() || "0";
+  return true;
+});
+
+document.getElementById("profilPerubahan").innerText = perubahanTerakhir;
   document.getElementById("profilPopup").style.display = "block";
 
   // Statistik Ngopi Boss 3 dari tiga kategori
