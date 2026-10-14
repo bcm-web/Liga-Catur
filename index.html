@@ -1084,20 +1084,18 @@ function bukaProfil(nama, gelar, rating) {
   document.getElementById("profilGelar").innerText = gelar || "-";
   document.getElementById("profilRating").innerText = rating || "0";
 
-  var ids = [
+  [
     "profilTurnamen",
     "profilPertandingan",
     "profilMenang",
     "profilRemis",
     "profilKalah",
     "profilPerubahan"
-  ];
-
-  ids.forEach(function(id) {
+  ].forEach(function(id) {
     document.getElementById(id).innerText = "0";
   });
 
-  // Hitung rating tertinggi dari tabel rating yang sudah ada
+  // Hitung rating tertinggi dari tabel yang sudah ada
   var ratingTertinggi = 0;
 
   ["tableYunior", "tableStandard", "tableElite"].forEach(function(id) {
@@ -1127,21 +1125,21 @@ function bukaProfil(nama, gelar, rating) {
 
   document.getElementById("profilPopup").style.display = "block";
 
-  // Statistik dua kategori dalam satu turnamen
+  // Statistik Ngopi Boss 3 dari tiga kategori
   var fileStatistik = [
+    "hasil-ngopi-boss-3-yunior.json",
     "hasil-ngopi-boss-3-nonmaster.json",
     "hasil-ngopi-boss-3-terbuka.json"
   ];
 
   Promise.all(
     fileStatistik.map(function(file) {
-      return fetch(file)
-        .then(function(response) {
-          if (!response.ok) {
-            throw new Error("Gagal membaca " + file);
-          }
-          return response.json();
-        });
+      return fetch(file).then(function(response) {
+        if (!response.ok) {
+          throw new Error("Gagal membaca " + file);
+        }
+        return response.json();
+      });
     })
   )
   .then(function(semuaData) {
