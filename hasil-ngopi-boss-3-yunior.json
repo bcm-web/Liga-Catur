@@ -1,0 +1,241 @@
+{
+  "turnamen": "Ngopi Boss 3",
+  "kategori": "Yunior U15",
+  "jumlahBabak": 6,
+  "pemain": [
+    {
+      "peringkat": 1,
+      "nama": "MUHAMMAD AZRIL ANUGRAH",
+      "poin": 5.5,
+      "pertandingan": 6,
+      "menang": 5,
+      "remis": 1,
+      "kalah": 0
+    },
+    {
+      "peringkat": 2,
+      "nama": "AZFAR ASY-SYAFI ATHALLAH",
+      "poin": 5,
+      "pertandingan": 6,
+      "menang": 5,
+      "remis": 0,
+      "kalah": 1
+    },
+    {
+      "peringkat": 3,
+      "nama": "DYAH FAHIRA",
+      "poin": 4.5,
+      "pertandingan": 6,
+      "menang": 4,
+      "remis": 1,
+      "kalah": 1
+    },
+    {
+      "peringkat": 4,
+      "nama": "MUHAMMAD AHZA",
+      "poin": 4.5,
+      "pertandingan": 6,
+      "menang": 4,
+      "remis": 1,
+      "kalah": 1
+    },
+    {
+      "peringkat": 5,
+      "nama": "MUHAMMAD NUR HUDA",
+      "poin": 4,
+      "pertandingan": 6,
+      "menang": 4,
+      "remis": 0,
+      "kalah": 2
+    },
+    {
+      "peringkat": 6,
+      "nama": "MUHAMMAD TAUFIK",
+      "poin": 4,
+      "pertandingan": 6,
+      "menang": 4,
+      "remis": 0,
+      "kalah": 2
+    },
+    {
+      "peringkat": 7,
+      "nama": "BUYA ALTAFIAN",
+      "poin": 4,
+      "pertandingan": 6,
+      "menang": 3,
+      "remis": 2,
+      "kalah": 1
+    },
+    {
+      "peringkat": 8,
+      "nama": "IQBAL PRATAMA NUGROHO",
+      "poin": 4,
+      "pertandingan": 6,
+      "menang": 4,
+      "remis": 0,
+      "kalah": 2
+    },
+    {
+      "peringkat": 9,
+      "nama": "LABIB ABDUL MUGNI",
+      "poin": 3.5,
+      "pertandingan": 6,
+      "menang": 3,
+      "remis": 1,
+      "kalah": 2
+    },
+    {
+      "peringkat": 10,
+      "nama": "ARZHEL",
+      "poin": 3.5,
+      "pertandingan": 6,
+      "menang": 3,
+      "remis": 1,
+      "kalah": 2
+    },
+    {
+      "peringkat": 11,
+      "nama": "ABDULLAH GHONI",
+      "poin": 3,
+      "pertandingan": 6,
+      "menang": 3,
+      "remis": 0,
+      "kalah": 3
+    },
+    {
+      "peringkat": 12,
+      "nama": "ZAKI MUHID MUZABBIB",
+      "poin": 3,
+      "pertandingan": 6,
+      "menang": 3,
+      "remis": 0,
+      "kalah": 3
+    },
+    {
+      "peringkat": 13,
+      "nama": "RAYMOND SACHIO ROYNALLE",
+      "poin": 3,
+      "pertandingan": 6,
+      "menang": 3,
+      "remis": 0,
+      "kalah": 3
+    },
+    {
+      "peringkat": 14,
+      "nama": "FATIHATUL AMMAR",
+      "poin": 3,
+      "pertandingan": 6,
+      "menang": 3,
+      "remis": 0,
+      "kalah": 3
+    },
+    {
+      "peringkat": 15,
+      "nama": "OVANDA JULIAN TANG",
+      "poin": 3,
+      "pertandingan": 6,
+      "menang": 3,
+      "remis": 0,
+      "kalah": 3
+    },
+    {
+      "peringkat": 16,
+      "nama": "IHSAN ABDUL MADANI",
+      "poin": 3,
+      "pertandingan": 6,
+      "menang": 3,
+      "remis": 0,
+      "kalah": 3
+    },
+    {
+      "peringkat": 17,
+      "nama": "AZWAN ASY-SAFI ATHALLAH",
+      "poin": 3,
+      "pertandingan": 6,
+      "menang": 3,
+      "remis": 0,
+      "kalah": 3
+    },
+    {
+      "peringkat": 18,
+      "nama": "MALIK AL-FATIH",
+      "poin": 2,
+      "pertandingan": 6,
+      "menang": 2,
+      "remis": 0,
+      "kalah": 4
+    },
+    {
+      "peringkat": 19,
+      "nama": "ANDHAMAR ABBY DASHA",
+      "poin": 2,
+      "pertandingan": 6,
+      "menang": 2,
+      "remis": 0,
+      "kalah": 4
+    },
+    {
+      "peringkat": 20,
+      "nama": "MUHAMMAD NUR AHZA AZIZAN",
+      "poin": 2,
+      "pertandingan": 6,
+      "menang": 2,
+      "remis": 0,
+      "kalah": 4
+    },
+    {
+      "peringkat": 21,
+      "nama": "AURA PRISCYLLA CANDRA",
+      "poin": 2,
+      "pertandingan": 6,
+      "menang": 2,
+      "remis": 0,
+      "kalah": 4
+    },
+    {
+      "peringkat": 22,
+      "nama": "KENZI THAARIQ",
+      "poin": 2,
+      "pertandingan": 6,
+      "menang": 2,
+      "remis": 0,
+      "kalah": 4
+    },
+    {
+      "peringkat": 23,
+      "nama": "AHMAD GHAIS",
+      "poin": 2,
+      "pertandingan": 6,
+      "menang": 2,
+      "remis": 0,
+      "kalah": 4
+    },
+    {
+      "peringkat": 24,
+      "nama": "MUHAMMAD RIZWAN",
+      "poin": 1.5,
+      "pertandingan": 6,
+      "menang": 1,
+      "remis": 1,
+      "kalah": 4
+    },
+    {
+      "peringkat": 25,
+      "nama": "ULWAN ASSYAKUR FAWWAZ",
+      "poin": 1,
+      "pertandingan": 6,
+      "menang": 1,
+      "remis": 0,
+      "kalah": 5
+    },
+    {
+      "peringkat": 26,
+      "nama": "MIKAIL FABIAN",
+      "poin": 0,
+      "pertandingan": 6,
+      "menang": 0,
+      "remis": 0,
+      "kalah": 6
+    }
+  ]
+    }
